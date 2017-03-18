@@ -1,0 +1,510 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+	<meta charset="utf-8">
+	<title>Sign up</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="https://assets3.goplanapp.com/stylesheets/grids-min.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
+<link href="https://assets2.goplanapp.com/stylesheets/goplan.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
+	
+<link href="https://assets3.goplanapp.com/stylesheets/wbs_tip.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
+
+		
+	<script src="https://assets2.goplanapp.com/javascripts/prototype.js?1389567503" type="text/javascript"></script>
+<script src="https://assets2.goplanapp.com/javascripts/effects.js?1389567503" type="text/javascript"></script>
+<script src="https://assets1.goplanapp.com/javascripts/dragdrop.js?1389567503" type="text/javascript"></script>
+<script src="https://assets3.goplanapp.com/javascripts/controls.js?1389567503" type="text/javascript"></script>
+<script src="https://assets3.goplanapp.com/javascripts/application.js?1389567503" type="text/javascript"></script>
+<script src="https://assets3.goplanapp.com/javascripts/application.js?1389567503" type="text/javascript"></script>
+	
+	<script src="https://assets2.goplanapp.com/javascripts/wbs_tip.js?1389567503" type="text/javascript"></script>
+	<script type="text/javascript" defer="true">
+	  document.observe('dom:loaded', function(){
+      $('company_alias').onchange = function(e){
+        new WBS.AjaxValidation('/validate/company',$(this.form),'alias',null,"");
+      };
+      $('promocode').onblur = function(e){
+        new WBS.AjaxValidation('/account/check_promocode', $(this.form), 'promocode', null,"");
+      };
+    });
+	</script>
+
+	
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-86888-18']);
+  _gaq.push(['_setDomainName', 'goplanapp.com']); 
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+	<div id="top_bar" class="yui-g">
+		<div class="yui-u first">
+			<strong>Goplan</strong>
+		</div>
+		<div class="yui-u ar">
+			<span class="rounded">
+				<span style="font-size: 10px; color: #666">Powered by Goplan</span>
+			</span>
+		</div>
+	</div>
+	
+	<div id="doc3">
+		<div id="bd">
+			
+			
+			
+
+
+<form action="/account/signup" id="signup" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="ALItNv9ezCxfyxm0ycLfiAueN1nYKyXoyljKy/e+Jmk=" /></div>	
+
+<h1 class="c">You have chosen the Free plan</h1>
+
+
+<fieldset>
+	<h2 class="">
+		<img alt="Step1" class="va" src="https://assets3.goplanapp.com/images/step1.png?1389567503" />
+		Company Details
+	</h2>
+	<p class="lh mb f11 lg">Every company on Goplan has its own private URL. In the following two fields, type in your company name and company URL. This will be the URL you use to login to your space, so make sure you keep a note of it.</p>
+
+	<div class="field">
+		<label for="company_name">Company name</label>
+		<input id="company_name" name="company[name]" size="30" type="text" />
+	</div>
+	<div class="field small">
+		<label for="company_alias">Company alias</label>
+		<div class="input" onclick="$('company_alias').focus();">
+			<input id="company_alias" name="company[alias]" size="30" type="text" />.goplanapp.com
+		</div>
+	</div>
+	<div class="field">
+		<label for="company_country_id">Country</label>
+		<select id="company_country_id" name="company[country_id]"><option value="1">Afghanistan</option>
+<option value="2">Albania</option>
+<option value="3">Algeria</option>
+<option value="4">American Samoa</option>
+<option value="5">Andorra</option>
+<option value="6">Angola</option>
+<option value="7">Anguilla</option>
+<option value="8">Antarctica</option>
+<option value="9">Antigua And Barbuda</option>
+<option value="10">Argentina</option>
+<option value="11">Armenia</option>
+<option value="12">Aruba</option>
+<option value="13">Australia</option>
+<option value="14">Austria</option>
+<option value="15">Azerbaijan</option>
+<option value="16">Bahamas</option>
+<option value="17">Bahrain</option>
+<option value="18">Bangladesh</option>
+<option value="19">Barbados</option>
+<option value="20">Belarus</option>
+<option value="21">Belgium</option>
+<option value="22">Belize</option>
+<option value="23">Benin</option>
+<option value="24">Bermuda</option>
+<option value="25">Bhutan</option>
+<option value="26">Bolivia</option>
+<option value="27">Bosnia and Herzegowina</option>
+<option value="28">Botswana</option>
+<option value="29">Bouvet Island</option>
+<option value="30">Brazil</option>
+<option value="31">British Indian Ocean Territory</option>
+<option value="32">Brunei Darussalam</option>
+<option value="33">Bulgaria</option>
+<option value="34">Burkina Faso</option>
+<option value="35">Burma (Union of Myanmar)</option>
+<option value="36">Burundi</option>
+<option value="37">Cambodia</option>
+<option value="38">Cameroon</option>
+<option value="39">Canada</option>
+<option value="40">Cape Verde</option>
+<option value="41">Cayman Islands</option>
+<option value="42">Central African Republic</option>
+<option value="43">Chad</option>
+<option value="44">Chile</option>
+<option value="45">China</option>
+<option value="46">Christmas Island</option>
+<option value="47">Cocos (Keeling) Islands</option>
+<option value="48">Colombia</option>
+<option value="49">Comoros</option>
+<option value="50">Congo</option>
+<option value="51">Congo, the Democratic Republic of the</option>
+<option value="52">Cook Islands</option>
+<option value="53">Costa Rica</option>
+<option value="54">Cote d'Ivoire</option>
+<option value="55">Croatia</option>
+<option value="56">Cuba</option>
+<option value="57">Cyprus</option>
+<option value="58">Czech Republic</option>
+<option value="59">Denmark</option>
+<option value="60">Djibouti</option>
+<option value="61">Dominica</option>
+<option value="62">Dominican Republic</option>
+<option value="63">East Timor</option>
+<option value="64">Ecuador</option>
+<option value="65">Egypt</option>
+<option value="66">El Salvador</option>
+<option value="68">Equatorial Guinea</option>
+<option value="69">Eritrea</option>
+<option value="71">Estonia</option>
+<option value="72">Ethiopia</option>
+<option value="73">Falkland Islands</option>
+<option value="74">Faroe Islands</option>
+<option value="75">Fiji</option>
+<option value="76">Finland</option>
+<option value="77">France</option>
+<option value="78">French Guiana</option>
+<option value="79">French Polynesia</option>
+<option value="80">French Southern Territories</option>
+<option value="81">Gabon</option>
+<option value="82">Gambia</option>
+<option value="83">Georgia</option>
+<option value="84">Germany</option>
+<option value="85">Ghana</option>
+<option value="86">Gibraltar</option>
+<option value="88">Greece</option>
+<option value="89">Greenland</option>
+<option value="90">Grenada</option>
+<option value="91">Guadeloupe</option>
+<option value="92">Guam</option>
+<option value="93">Guatemala</option>
+<option value="94">Guinea</option>
+<option value="95">Guinea-Bissau</option>
+<option value="96">Guyana</option>
+<option value="97">Haiti</option>
+<option value="98">Heard and Mc Donald Islands</option>
+<option value="99">Honduras</option>
+<option value="100">Hong Kong</option>
+<option value="101">Hungary</option>
+<option value="102">Iceland</option>
+<option value="103">India</option>
+<option value="104">Indonesia</option>
+<option value="108">Iran</option>
+<option value="109">Iraq</option>
+<option value="105">Ireland</option>
+<option value="106">Israel</option>
+<option value="107">Italy</option>
+<option value="110">Jamaica</option>
+<option value="111">Japan</option>
+<option value="112">Jordan</option>
+<option value="113">Kazakhstan</option>
+<option value="114">Kenya</option>
+<option value="115">Kiribati</option>
+<option value="118">Kuwait</option>
+<option value="119">Kyrgyzstan</option>
+<option value="120">Lao People's Democratic Republic</option>
+<option value="121">Latvia</option>
+<option value="122">Lebanon</option>
+<option value="123">Lesotho</option>
+<option value="124">Liberia</option>
+<option value="125">Liechtenstein</option>
+<option value="126">Lithuania</option>
+<option value="127">Luxembourg</option>
+<option value="128">Macau</option>
+<option value="129">Macedonia</option>
+<option value="130">Madagascar</option>
+<option value="131">Malawi</option>
+<option value="132">Malaysia</option>
+<option value="133">Maldives</option>
+<option value="134">Mali</option>
+<option value="135">Malta</option>
+<option value="136">Marshall Islands</option>
+<option value="137">Martinique</option>
+<option value="138">Mauritania</option>
+<option value="139">Mauritius</option>
+<option value="140">Mayotte</option>
+<option value="141">Mexico</option>
+<option value="142">Micronesia, Federated States of</option>
+<option value="143">Moldova, Republic of</option>
+<option value="144">Monaco</option>
+<option value="145">Mongolia</option>
+<option value="246">Montenegro</option>
+<option value="146">Montserrat</option>
+<option value="147">Morocco</option>
+<option value="148">Mozambique</option>
+<option value="150">Namibia</option>
+<option value="151">Nauru</option>
+<option value="152">Nepal</option>
+<option value="153">Netherlands</option>
+<option value="154">Netherlands Antilles</option>
+<option value="155">New Caledonia</option>
+<option value="156">New Zealand</option>
+<option value="157">Nicaragua</option>
+<option value="158">Niger</option>
+<option value="159">Nigeria</option>
+<option value="160">Niue</option>
+<option value="161">Norfolk Island</option>
+<option value="116">North Korea (Democratic People's Republic of Korea)</option>
+<option value="163">Northern Mariana Islands</option>
+<option value="164">Norway</option>
+<option value="165">Oman</option>
+<option value="166">Pakistan</option>
+<option value="167">Palau</option>
+<option value="168">Panama</option>
+<option value="169">Papua New Guinea</option>
+<option value="170">Paraguay</option>
+<option value="171">Peru</option>
+<option value="172">Philippines</option>
+<option value="173">Pitcairn</option>
+<option value="174">Poland</option>
+<option value="175">Portugal</option>
+<option value="176">Puerto Rico</option>
+<option value="177">Qatar</option>
+<option value="178">Reunion</option>
+<option value="179">Romania</option>
+<option value="180">Russia</option>
+<option value="181">Rwanda</option>
+<option value="182">Saint Kitts and Nevis</option>
+<option value="183">Saint Lucia</option>
+<option value="184">Saint Vincent and the Grenadines</option>
+<option value="185">Samoa (Independent)</option>
+<option value="186">San Marino</option>
+<option value="187">Sao Tome and Principe</option>
+<option value="188">Saudi Arabia</option>
+<option value="190">Senegal</option>
+<option value="245">Serbia</option>
+<option value="192">Seychelles</option>
+<option value="193">Sierra Leone</option>
+<option value="194">Singapore</option>
+<option value="195">Slovakia</option>
+<option value="196">Slovenia</option>
+<option value="197">Solomon Islands</option>
+<option value="198">Somalia</option>
+<option value="199">South Africa</option>
+<option value="200">South Georgia and the South Sandwich Islands</option>
+<option value="201">South Korea (Republic of Korea)</option>
+<option value="202">Spain</option>
+<option value="203">Sri Lanka</option>
+<option value="204">St. Helena</option>
+<option value="205">St. Pierre and Miquelon</option>
+<option value="206">Suriname</option>
+<option value="207">Svalbard and Jan Mayen Islands</option>
+<option value="208">Swaziland</option>
+<option value="209">Sweden</option>
+<option value="210">Switzerland</option>
+<option value="211">Taiwan</option>
+<option value="212">Tajikistan</option>
+<option value="213">Tanzania</option>
+<option value="214">Thailand</option>
+<option value="215">Togo</option>
+<option value="216">Tokelau</option>
+<option value="217">Tonga</option>
+<option value="219">Trinidad and Tobago</option>
+<option value="220">Tunisia</option>
+<option value="221">Turkey</option>
+<option value="222">Turkmenistan</option>
+<option value="223">Turks and Caicos Islands</option>
+<option value="224">Tuvalu</option>
+<option value="225">Uganda</option>
+<option value="226">Ukraine</option>
+<option value="227">United Arab Emirates</option>
+<option value="228">United Kingdom</option>
+<option value="229" selected="selected">United States</option>
+<option value="230">United States Minor Outlying Islands</option>
+<option value="231">Uruguay</option>
+<option value="232">Uzbekistan</option>
+<option value="233">Vanuatu</option>
+<option value="234">Vatican City State (Holy See)</option>
+<option value="235">Venezuela</option>
+<option value="236">Viet Nam</option>
+<option value="237">Virgin Islands (British)</option>
+<option value="238">Virgin Islands (U.S.)</option>
+<option value="240">Wallis and Futuna Islands</option>
+<option value="241">Western Sahara</option>
+<option value="242">Yemen</option>
+<option value="243">Zambia</option>
+<option value="244">Zimbabwe</option></select>
+	</div>
+	<h2 class="lmt">
+		<img alt="Step2" class="va" src="https://assets0.goplanapp.com/images/step2.png?1389567503" />
+		About you
+	</h2>
+	<p class="lh mb f11 lg">The second (and final) thing you need to sign-up is to create your first user account (typically yours). You should also choose your timezone so we can show you dates and times adjusted to your location.</p>	
+	<div class="field">
+		<label for="user_name">Name</label>
+		<input id="user_name" name="user[name]" size="30" type="text" />
+	</div>
+	<div class="field">
+		<label for="user_alias">Alias <em>(A short nickname, no spaces allowed)</em></label>
+		<input id="user_alias" name="user[alias]" size="30" type="text" />
+	</div>
+	<div class="field">
+		<label for="user_email">Email</label>
+		<input id="user_email" name="user[email]" size="30" type="text" />
+	</div>
+	<div class="field">	
+		<label for="user_password">Password</label>
+		<input id="user_password" name="user[password]" size="30" type="password" />
+	</div>
+	<div class="field">
+		<label for="user_password_confirmation">Confirm password</label>
+		<input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" />
+	</div>
+	<div class="field">
+		<label for="user_time_zone">Time Zone</label>
+		<select id="user_time_zone" name="user[time_zone]"><optgroup label="(GMT -11:00)"><option value="International Date Line West">International Date Line West (GMT -11:00)</option>
+<option value="Midway Island">Midway Island (GMT -11:00)</option>
+<option value="Samoa">Samoa (GMT -11:00)</option></optgroup><optgroup label="(GMT -10:00)"><option value="Hawaii">Hawaii (GMT -10:00)</option></optgroup><optgroup label="(GMT -09:00)"><option value="Alaska">Alaska (GMT -09:00)</option></optgroup><optgroup label="(GMT -08:00)"><option value="Pacific Time (US &amp; Canada)">Pacific Time (US &amp; Canada) (GMT -08:00)</option>
+<option value="Tijuana">Tijuana (GMT -08:00)</option></optgroup><optgroup label="(GMT -07:00)"><option value="Arizona">Arizona (GMT -07:00)</option>
+<option value="Chihuahua">Chihuahua (GMT -07:00)</option>
+<option value="Mazatlan">Mazatlan (GMT -07:00)</option>
+<option value="Mountain Time (US &amp; Canada)">Mountain Time (US &amp; Canada) (GMT -07:00)</option></optgroup><optgroup label="(GMT -06:00)"><option value="Central America">Central America (GMT -06:00)</option>
+<option value="Central Time (US &amp; Canada)">Central Time (US &amp; Canada) (GMT -06:00)</option>
+<option value="Guadalajara">Guadalajara (GMT -06:00)</option>
+<option value="Mexico City">Mexico City (GMT -06:00)</option>
+<option value="Monterrey">Monterrey (GMT -06:00)</option>
+<option value="Saskatchewan">Saskatchewan (GMT -06:00)</option></optgroup><optgroup label="(GMT -05:00)"><option value="Bogota">Bogota (GMT -05:00)</option>
+<option value="Eastern Time (US &amp; Canada)">Eastern Time (US &amp; Canada) (GMT -05:00)</option>
+<option value="Indiana (East)">Indiana (East) (GMT -05:00)</option>
+<option value="Lima">Lima (GMT -05:00)</option>
+<option value="Quito">Quito (GMT -05:00)</option></optgroup><optgroup label="(GMT -04:30)"><option value="Caracas">Caracas (GMT -04:30)</option></optgroup><optgroup label="(GMT -04:00)"><option value="Atlantic Time (Canada)">Atlantic Time (Canada) (GMT -04:00)</option>
+<option value="La Paz">La Paz (GMT -04:00)</option>
+<option value="Santiago">Santiago (GMT -04:00)</option></optgroup><optgroup label="(GMT -03:00)"><option value="Brasilia">Brasilia (GMT -03:00)</option>
+<option value="Buenos Aires">Buenos Aires (GMT -03:00)</option>
+<option value="Georgetown">Georgetown (GMT -03:00)</option>
+<option value="Greenland">Greenland (GMT -03:00)</option></optgroup><optgroup label="(GMT -03:30)"><option value="Newfoundland">Newfoundland (GMT -03:30)</option></optgroup><optgroup label="(GMT -02:00)"><option value="Mid-Atlantic">Mid-Atlantic (GMT -02:00)</option></optgroup><optgroup label="(GMT -01:00)"><option value="Azores">Azores (GMT -01:00)</option>
+<option value="Cape Verde Is.">Cape Verde Is. (GMT -01:00)</option></optgroup><optgroup label="(GMT +00:00)"><option value="Casablanca">Casablanca (GMT +00:00)</option>
+<option value="Dublin">Dublin (GMT +00:00)</option>
+<option value="Edinburgh">Edinburgh (GMT +00:00)</option>
+<option value="Lisbon">Lisbon (GMT +00:00)</option>
+<option value="London">London (GMT +00:00)</option>
+<option value="Monrovia">Monrovia (GMT +00:00)</option></optgroup><optgroup label="(GMT +01:00)"><option value="Amsterdam">Amsterdam (GMT +01:00)</option>
+<option value="Belgrade">Belgrade (GMT +01:00)</option>
+<option value="Berlin">Berlin (GMT +01:00)</option>
+<option value="Bern">Bern (GMT +01:00)</option>
+<option value="Bratislava">Bratislava (GMT +01:00)</option>
+<option value="Brussels">Brussels (GMT +01:00)</option>
+<option value="Budapest">Budapest (GMT +01:00)</option>
+<option value="Copenhagen">Copenhagen (GMT +01:00)</option>
+<option value="Ljubljana">Ljubljana (GMT +01:00)</option>
+<option value="Madrid">Madrid (GMT +01:00)</option>
+<option value="Paris">Paris (GMT +01:00)</option>
+<option value="Prague">Prague (GMT +01:00)</option>
+<option value="Rome">Rome (GMT +01:00)</option>
+<option value="Sarajevo">Sarajevo (GMT +01:00)</option>
+<option value="Skopje">Skopje (GMT +01:00)</option>
+<option value="Stockholm">Stockholm (GMT +01:00)</option>
+<option value="Vienna">Vienna (GMT +01:00)</option>
+<option value="Warsaw">Warsaw (GMT +01:00)</option>
+<option value="West Central Africa">West Central Africa (GMT +01:00)</option>
+<option value="Zagreb">Zagreb (GMT +01:00)</option></optgroup><optgroup label="(GMT +02:00)"><option value="Athens">Athens (GMT +02:00)</option>
+<option value="Bucharest">Bucharest (GMT +02:00)</option>
+<option value="Cairo">Cairo (GMT +02:00)</option>
+<option value="Harare">Harare (GMT +02:00)</option>
+<option value="Helsinki">Helsinki (GMT +02:00)</option>
+<option value="Istanbul">Istanbul (GMT +02:00)</option>
+<option value="Jerusalem">Jerusalem (GMT +02:00)</option>
+<option value="Kyev">Kyev (GMT +02:00)</option>
+<option value="Minsk">Minsk (GMT +02:00)</option>
+<option value="Pretoria">Pretoria (GMT +02:00)</option>
+<option value="Riga">Riga (GMT +02:00)</option>
+<option value="Sofia">Sofia (GMT +02:00)</option>
+<option value="Tallinn">Tallinn (GMT +02:00)</option>
+<option value="Vilnius">Vilnius (GMT +02:00)</option></optgroup><optgroup label="(GMT +03:00)"><option value="Baghdad">Baghdad (GMT +03:00)</option>
+<option value="Kuwait">Kuwait (GMT +03:00)</option>
+<option value="Moscow">Moscow (GMT +03:00)</option>
+<option value="Nairobi">Nairobi (GMT +03:00)</option>
+<option value="Riyadh">Riyadh (GMT +03:00)</option>
+<option value="St. Petersburg">St. Petersburg (GMT +03:00)</option>
+<option value="Volgograd">Volgograd (GMT +03:00)</option></optgroup><optgroup label="(GMT +03:30)"><option value="Tehran">Tehran (GMT +03:30)</option></optgroup><optgroup label="(GMT +04:00)"><option value="Abu Dhabi">Abu Dhabi (GMT +04:00)</option>
+<option value="Baku">Baku (GMT +04:00)</option>
+<option value="Muscat">Muscat (GMT +04:00)</option>
+<option value="Tbilisi">Tbilisi (GMT +04:00)</option>
+<option value="Yerevan">Yerevan (GMT +04:00)</option></optgroup><optgroup label="(GMT +04:30)"><option value="Kabul">Kabul (GMT +04:30)</option></optgroup><optgroup label="(GMT +05:45)"><option value="Kathmandu">Kathmandu (GMT +05:45)</option></optgroup><optgroup label="(GMT +05:30)"><option value="Chennai">Chennai (GMT +05:30)</option>
+<option value="Kolkata">Kolkata (GMT +05:30)</option>
+<option value="Mumbai">Mumbai (GMT +05:30)</option>
+<option value="New Delhi">New Delhi (GMT +05:30)</option>
+<option value="Sri Jayawardenepura">Sri Jayawardenepura (GMT +05:30)</option></optgroup><optgroup label="(GMT +05:00)"><option value="Ekaterinburg">Ekaterinburg (GMT +05:00)</option>
+<option value="Islamabad">Islamabad (GMT +05:00)</option>
+<option value="Karachi">Karachi (GMT +05:00)</option>
+<option value="Tashkent">Tashkent (GMT +05:00)</option></optgroup><optgroup label="(GMT +06:00)"><option value="Almaty">Almaty (GMT +06:00)</option>
+<option value="Astana">Astana (GMT +06:00)</option>
+<option value="Dhaka">Dhaka (GMT +06:00)</option>
+<option value="Novosibirsk">Novosibirsk (GMT +06:00)</option></optgroup><optgroup label="(GMT +06:30)"><option value="Rangoon">Rangoon (GMT +06:30)</option></optgroup><optgroup label="(GMT +07:00)"><option value="Bangkok">Bangkok (GMT +07:00)</option>
+<option value="Hanoi">Hanoi (GMT +07:00)</option>
+<option value="Jakarta">Jakarta (GMT +07:00)</option>
+<option value="Krasnoyarsk">Krasnoyarsk (GMT +07:00)</option></optgroup><optgroup label="(GMT +08:00)"><option value="Beijing">Beijing (GMT +08:00)</option>
+<option value="Chongqing">Chongqing (GMT +08:00)</option>
+<option value="Hong Kong">Hong Kong (GMT +08:00)</option>
+<option value="Irkutsk">Irkutsk (GMT +08:00)</option>
+<option value="Kuala Lumpur">Kuala Lumpur (GMT +08:00)</option>
+<option value="Perth">Perth (GMT +08:00)</option>
+<option value="Singapore">Singapore (GMT +08:00)</option>
+<option value="Taipei">Taipei (GMT +08:00)</option>
+<option value="Ulaan Bataar">Ulaan Bataar (GMT +08:00)</option>
+<option value="Urumqi">Urumqi (GMT +08:00)</option></optgroup><optgroup label="(GMT +09:30)"><option value="Adelaide">Adelaide (GMT +09:30)</option>
+<option value="Darwin">Darwin (GMT +09:30)</option></optgroup><optgroup label="(GMT +09:00)"><option value="Osaka">Osaka (GMT +09:00)</option>
+<option value="Sapporo">Sapporo (GMT +09:00)</option>
+<option value="Seoul">Seoul (GMT +09:00)</option>
+<option value="Tokyo">Tokyo (GMT +09:00)</option>
+<option value="Yakutsk">Yakutsk (GMT +09:00)</option></optgroup><optgroup label="(GMT +10:00)"><option value="Brisbane">Brisbane (GMT +10:00)</option>
+<option value="Canberra">Canberra (GMT +10:00)</option>
+<option value="Guam">Guam (GMT +10:00)</option>
+<option value="Hobart">Hobart (GMT +10:00)</option>
+<option value="Melbourne">Melbourne (GMT +10:00)</option>
+<option value="Port Moresby">Port Moresby (GMT +10:00)</option>
+<option value="Sydney">Sydney (GMT +10:00)</option>
+<option value="Vladivostok">Vladivostok (GMT +10:00)</option></optgroup><optgroup label="(GMT +11:00)"><option value="Magadan">Magadan (GMT +11:00)</option>
+<option value="New Caledonia">New Caledonia (GMT +11:00)</option>
+<option value="Solomon Is.">Solomon Is. (GMT +11:00)</option></optgroup><optgroup label="(GMT +12:00)"><option value="Auckland">Auckland (GMT +12:00)</option>
+<option value="Fiji">Fiji (GMT +12:00)</option>
+<option value="Kamchatka">Kamchatka (GMT +12:00)</option>
+<option value="Marshall Is.">Marshall Is. (GMT +12:00)</option>
+<option value="Wellington">Wellington (GMT +12:00)</option></optgroup><optgroup label="(GMT +13:00)"><option value="Nuku'alofa">Nuku'alofa (GMT +13:00)</option></optgroup></select>
+	</div>
+
+	<h2 class="lmt">
+		<img alt="Step3" class="va" src="https://assets2.goplanapp.com/images/step3.png?1389567503" />
+		Confirm data and create account!
+	</h2>
+
+	<div class="field mb">
+		<label for="company_plan">Confirm your plan selection</label>
+		<select id="plan" name="plan" onchange="$('promocode').value=''; $('promo_message').hide(); $('promo_error').hide();"><option value="startup">Startup - $10</option>
+<option value="pro">Professional - $35</option>
+<option value="unlimited">Unlimited - $80</option></select>
+		<span id="promo_message" style="display: none"><span>Changing your plan to reflect your promotional code</span></span>
+	</div>
+
+	<div class="field mb">
+		<label for="promocode">Have a promotional code? <span>Optional</span></label>
+		<input id="promocode" name="promocode" type="text" value="" />
+	</div>
+	
+	<div id="promo_error" style="display: none"><span></span></div>
+
+	<br /><br />
+
+	<div class="field">
+		<div class="box">
+			
+			<p class="lh mb f11 lg">You are almost done! Double check everything you typed in, and after agreeing to our Terms of Service, click the button to create your account and start using Goplan! We hope you like it!</p>
+			
+		<input name="tos" value="0" type="hidden"> <input id="tos" name="tos" type="checkbox" value="1" /> <label style="display:inline; font-size: 11px" for="tos">I agree with Goplan's <a href="/home/tos" target="_BLANK">Terms of Service</a> and <a href="/home/privacy" target="_BLANK">Privacy Policy</a></label>
+		</div>
+	</div>
+
+	<div class="submit">
+		<input name="commit" onclick="if (window.hiddenCommit) { window.hiddenCommit.setAttribute('value', this.value); }else { hiddenCommit = document.createElement('input');hiddenCommit.type = 'hidden';hiddenCommit.value = this.value;hiddenCommit.name = this.name;this.form.appendChild(hiddenCommit); }this.setAttribute('originalValue', this.value);this.disabled = true;this.value='Creating account...';result = (this.form.onsubmit ? (this.form.onsubmit() ? this.form.submit() : false) : this.form.submit());if (result == false) { this.value = this.getAttribute('originalValue');this.disabled = false; }return result;" type="submit" value="Create my account" />
+	</div>
+</fieldset>
+</form>
+
+		</div>
+		<div id="ft">
+			Powered by <strong>Goplan</strong> / <span class="hl"><a href="http://help.goplanapp.com">Get Help</a></span>
+		</div>
+	</div>	
+</body>
+</html>

@@ -90,12 +90,16 @@ app.post('/signup', function(request, response) {
         insertExp(username, foodExpertise);
         insertExp(username, sportsExpertise);
         insertExp(username, travelExpertise);
+
+        // go to dashboard
+
         return;
     }).then(result => {
         console.dir(result);
     }).catch(err => {
         console.dir(err);
     })
+    sql.close();
 });
 
 function insertLang(username, language) {
@@ -131,18 +135,25 @@ function insertExp(username, experience) {
     }
 }
 
-// function login(user, pass) {
 app.post('/login', function(request, response) {
-    var user = request.body.user;
-    var pass = request.body.password;
+    var user = "'" + request.body.user + "'";
+    var pass = "'" + request.body.password + "'";
+
     sql.connect(config).then(() => {
         console.dir("Trying to login");
         var request = new sql.Request();
-        request.query("select * from credentials where username=" + user + " password=" + pass, function(err, recordset) {
-            console.log(recordset);
-            console.log(recordset.rowsAffected[0]);
-            console.log(recordset[0].rowsAffected[0]);
-            console.log(recordset[0].number);
+        sqlStat = "select * from credentials where regUserName=" + user + " and password=" + pass;
+        request.query(sqlStat, function(err, recordset) {
+            var loginSuccess = recordset.rowsAffected[0] === 1;
+            if (loginSuccess) {
+                console.log("LOGIN SUCCESS!");
+                // Go to dashboard
+            } else {
+                console.log("LOGIN FAILED!");
+                response.writeHead(204, "Login failed");
+                response.end();
+            }
+            sql.close();
         });
         return;
     }).then(result => {
@@ -152,8 +163,34 @@ app.post('/login', function(request, response) {
     })
 });
 
+
+app.post('/addConnection', function(request, response) {
+    var user1;
+    var user2;
+
+    sql.connect(config).then(() => {}).then(result => {
+        console.dir(result);
+    }).catch(err => {
+        console.dir(err);
+    })
+});
+
+
+app.post('/postMessage', function(request, response) {
+    var user1;
+    var user2;
+
+    sql.connect(config).then(() => {
+
+    }).then(result => {
+        console.dir(result);
+    }).catch(err => {
+        console.dir(err);
+    })
+});
+
 app.listen(8080, function() {
-    console.log("POST server running at http://127.0.0.1:8080/");
+    console.log("POST server running at http://localhost:8080/");
 });
 
 ////////////////////////////////////////////////////// SQL SECTION AHEAD

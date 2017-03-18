@@ -17,26 +17,87 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/signup', function(request, response) {
     // console.log(request.body);
-    var username = request.body.user.username;
-    var password = request.body.user.password;
-    var email = request.body.user.email;
+    var username = "'" + request.body.user.username + "'";
+    var password = "'" + request.body.user.password + "'";
+
+    var email = "'" + request.body.user.email + "'";
     var agegroup = request.body.user.age;
-    var country = request.body.company.country_id;
-    var prefLanguage = request.body.user.language;
-    var otherLanguage = request.body.user.otherlang;
-    var aboutme = request.body.user.aboutme;
-    var booksInterest = request.body.interest.books;
-    var careerInterest = request.body.interest.career;
-    var educationInterest = request.body.interest.education;
-    var foodInterest = request.body.interest.food;
-    var sportsInterest = request.body.interest.sports;
-    var travelInterest = request.body.interest.travel;
-    var booksExpertise = request.body.expertise.books;
-    var careerExpertise = request.body.expertise.career;
-    var educationExpertise = request.body.expertise.education;
-    var foodExpertise = request.body.expertise.food;
-    var sportsExpertise = request.body.expertise.sports;
-    var travelExpertise = request.body.expertise.travel;
+    var country = "'" + request.body.company.country_id + "'";
+    var prefLanguage = "'" + request.body.user.language + "'";
+    var otherLanguage = "'" + request.body.user.otherlang + "'";
+    var aboutme = "'" + request.body.user.aboutme + "'";
+
+    var booksInterest = request.body.interest.books != undefined;
+    var careerInterest = request.body.interest.career != undefined;
+    var educationInterest = request.body.interest.education != undefined;
+    var foodInterest = request.body.interest.food != undefined;
+    var sportsInterest = request.body.interest.sports != undefined;
+    var travelInterest = request.body.interest.travel != undefined;
+    // var booksExpertise = request.body.expertise.book != undefined;
+    // var careerExpertise = request.body.expertise.career != undefined;
+    // var educationExpertise = request.body.expertise.education != undefined;
+    // var foodExpertise = request.body.expertise.food != undefined;
+    // var sportsExpertise = request.body.expertise.sports != undefined;
+    // var travelExpertise = request.body.expertise.travel != undefined;
+
+    console.log(request.body.expertise);
+
+    // sql.connect(config).then(() => {
+    //     console.dir("Trying to login");
+    //     var request1 = new sql.Request();
+    //     var sqlStatement1 = 'insert into regUser (regUserName,email,country,agegroup,preferredlanguage,aboutme) values (' + username + ',' + email + ',' + country + ',' + agegroup + ',' + prefLanguage + ',' + aboutme + ')';
+    //     request1.query(sqlStatement1, function(err, recordset1) {
+    //         if (recordset1[0] > 0) { //if insertion is successful
+    //             var request2 = new sql.Request();
+    //             var sqlStatement2 = 'insert into credentials (regUserName,password) values (' + username + ',' + password + ')';
+    //             request2.query(sqlStatement2, function(err, recordset2) {
+    //                 if (recordset2[0] > 0) { //if insertion is successful
+    //                     for (i = 0; i < arr_interest.length; i++) {
+    //                         var request3 = new sql.Request();
+    //                         request3.query('insert into credentials (username,interest), values (' + str_user + ',' + arr_interest[i] + ')', function(err, recordset3) {
+    //                             if (recordset3[0] > 0) { //if insertion is successful
+
+    //                             }
+    //                         });
+    //                     }
+    //                     for (i = 0; i < arr_expertise.length; i++) {
+    //                         var request4 = new sql.Request();
+    //                         request4.query('insert into credentials (username,experience), values (' + str_user + ',' + arr_expertise[i] + ')', function(err, recordset4) {
+    //                             if (recordset4[0] > 0) { //if insertion is successful
+
+    //                             }
+    //                         });
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //     });
+    //     return;
+    // }).then(result => {
+    //     console.dir(result);
+    // }).catch(err => {
+    //     console.dir(err);
+    // })
+});
+
+
+
+// function login(user, pass) {
+app.post('/login', function(request, response) {
+    var user = request.body.user;
+    var pass = request.body.password;
+    sql.connect(config).then(() => {
+        console.dir("Trying to login");
+        var request = new sql.Request();
+        request.query("select * from credentials where username=" + user + " password=" + pass, function(err, recordset) {
+            console.log(recordset[0].number);
+        });
+        return;
+    }).then(result => {
+        console.dir(result);
+    }).catch(err => {
+        console.dir(err);
+    })
 });
 
 app.listen(8080, function() {
@@ -80,55 +141,3 @@ function callThisToTest() {
         console.dir(err);
     })
 }
-
-// function login(user, pass) {
-//     sql.connect(config).then(() => {
-//         console.dir("Trying to login");
-//         var request = new sql.Request();
-//         request.query("select * from credentials where username=" + user + " password=" + pass, function(err, recordset) {
-//             console.log(recordset[0].number);
-//         });
-//         return;
-//     }).then(result => {
-//         console.dir(result);
-//     }).catch(err => {
-//         console.dir(err);
-//     })
-// }
-
-// function signup(str_user, str_pass, str_email, int_agegroup, str_country, str_lang, arr_otherlang~, arr_interest, arr_expertise, str_aboutme) {
-//     sql.connect(config).then(() => {
-//         console.dir("Trying to login");
-//         var request1 = new sql.Request();
-//         request.query('insert into credentials (username,password), values (' + str_user + ',' + str_pass + ')', function(err, recordset1) {
-//             if (recordset1[0] > 0) { //if insertion is successful
-//                 var request2 = new sql.Request();
-//                 request2.query('insert into credentials (username,email,country,ageGroup,preferredLanguage,aboutMe,PROFILEPIC,STATUS), values (' + str_user + ',' + str_email + ',' + str_country + ',' + int_agegroup + ',' + str_lang + ',' + str_aboutme + ',' + PROFILEPIC~+',' + STATUS~+')', function(err, recordset2) {
-//                     if (recordset2[0] > 0) { //if insertion is successful
-//                         for (i = 0; i < arr_interest.length; i++) {
-//                             var request3 = new sql.Request();
-//                             request3.query('insert into credentials (username,interest), values (' + str_user + ',' + arr_interest[i] + ')', function(err, recordset3) {
-//                                 if (recordset3[0] > 0) { //if insertion is successful
-
-//                                 }
-//                             });
-//                         }
-//                         for (i = 0; i < arr_expertise.length; i++) {
-//                             var request4 = new sql.Request();
-//                             request4.query('insert into credentials (username,experience), values (' + str_user + ',' + arr_expertise[i] + ')', function(err, recordset4) {
-//                                 if (recordset4[0] > 0) { //if insertion is successful
-
-//                                 }
-//                             });
-//                         }
-//                     }
-//                 });
-//             }
-//         });
-//         return;
-//     }).then(result => {
-//         console.dir(result);
-//     }).catch(err => {
-//         console.dir(err);
-//     })
-// }

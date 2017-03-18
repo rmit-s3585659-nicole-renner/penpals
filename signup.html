@@ -4,30 +4,39 @@
 <head>
     <meta charset="utf-8">
     <title>Sign up</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+        #signup fieldset {
+            width: 100%;
+            border: 5px solid #008B8B !important;
+        }
+    </style>
+    <script>
+        function submitAction() {
+
+        }
+    </script>
+    <!--link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
     <link href="https://assets3.goplanapp.com/stylesheets/grids-min.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
     <link href="https://assets2.goplanapp.com/stylesheets/goplan.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
 
     <link href="https://assets3.goplanapp.com/stylesheets/wbs_tip.css?1389567503" media="screen" rel="stylesheet" type="text/css" />
 
 
-    <script src="https://assets2.goplanapp.com/javascripts/prototype.js?1389567503" type="text/javascript"></script>
+    <!--<script src="https://assets2.goplanapp.com/javascripts/prototype.js?1389567503" type="text/javascript"></script>
     <script src="https://assets2.goplanapp.com/javascripts/effects.js?1389567503" type="text/javascript"></script>
     <script src="https://assets1.goplanapp.com/javascripts/dragdrop.js?1389567503" type="text/javascript"></script>
     <script src="https://assets3.goplanapp.com/javascripts/controls.js?1389567503" type="text/javascript"></script>
     <script src="https://assets3.goplanapp.com/javascripts/application.js?1389567503" type="text/javascript"></script>
-    <script src="https://assets3.goplanapp.com/javascripts/application.js?1389567503" type="text/javascript"></script>
+    <script src="https://assets3.goplanapp.com/javascripts/application.js?1389567503" type="text/javascript"></script>-->
 
     <script src="https://assets2.goplanapp.com/javascripts/wbs_tip.js?1389567503" type="text/javascript"></script>
     <script src="app.js" type="text/javascript"></script>
 </head>
 
 <body>
-    <div id="top_bar" class="yui-g">
-        <div class="yui-u first">
-            <strong>Penpal</strong>
-        </div>
-    </div>
+    <header>
+        <img alt="Header" src="images/Header.png" width="100%" />
+    </header>
 
     <div id="doc3">
         <div id="bd">
@@ -39,7 +48,7 @@
 
                 <fieldset>
                     <h2 class="">
-                        <img alt="Step1" class="va" src="https://assets3.goplanapp.com/images/step1.png?1389567503" /> Personal Details
+                        <img alt="Step1" class="va" src="images/Numbers.png" /> Personal Details
                     </h2>
                     <!--<p class="lh mb f11 lg">Every company on Goplan has its own private URL. In the following two fields, type in your company name and company URL. This will be the URL you use to login to your space, so make sure you keep a note of it.</p>-->
 
@@ -318,42 +327,42 @@
                         <input id="otherlang" name="user[otherlang]" size="30" type="text" />
                     </div>
                     <h2 class="lmt">
-                        <img alt="Step2" class="va" src="https://assets0.goplanapp.com/images/step2.png?1389567503" /> Interests and Expertise
+                        <img alt="Step2" class="va" src="images/Numbers_2.png" /> Interests and Expertise
                     </h2>
                     <table>
                         <tr>
                             <td>Books</td>
                             <td><input type="checkbox" name="interest" value="Books"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Books"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Books"> Experienced</td>
                         </tr>
                         <tr>
                             <td>Career</td>
                             <td><input type="checkbox" name="interest" value="Career"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Career"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Career"> Experienced</td>
                         </tr>
                         <tr>
                             <td>Education</td>
                             <td><input type="checkbox" name="interest" value="Education"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Education"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Education"> Experienced</td>
                         </tr>
                         <tr>
                             <td>Food</td>
                             <td><input type="checkbox" name="interest" value="Food"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Food"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Food"> Experienced</td>
                         </tr>
                         <tr>
                             <td>Sports</td>
                             <td><input type="checkbox" name="interest" value="Sports"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Sports"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Sports"> Experienced</td>
                         </tr>
                         <tr>
                             <td>Travel</td>
                             <td><input type="checkbox" name="interest" value="Travel"> Interested </td>
-                            <td><input type="checkbox" name="expertise" value="Travel"> Expertised</td>
+                            <td><input type="checkbox" name="expertise" value="Travel"> Experienced</td>
                         </tr>
                     </table>
                     <h2 class="lmt">
-                        <img alt="Step3" class="va" src="https://assets0.goplanapp.com/images/step3.png?1389567503" /> About Me
+                        <img alt="Step3" class="va" src="images/Numbers_3.png" /> About Me
                     </h2>
                     <div class="field">
                         <label for="aboutme">About Me</label>
@@ -364,21 +373,23 @@
 
                             <p class="lh mb f11 lg">You are almost done! Double check everything you typed in, and after agreeing to our age restriction, click the button to create your account and start using penpal! We hope you like it!</p>
 
-                            <input name="tos" value="0" type="hidden"> <input id="tos" name="tos" type="checkbox" value="1" /> <label style="display:inline; font-size: 11px" for="tos">I am 13 years or older </label>
+                            <input name="tos" value="0" type="hidden"> <input id="tos" name="tos" type="checkbox" value="1" /> <label style="display:inline; font-size: 11px" for="tos">I am 13 years or older. </label>
                         </div>
                     </div>
 
                     <div class="submit">
-                        <input name="commit" onclick="if (window.hiddenCommit) { window.hiddenCommit.setAttribute('value', this.value); }else { hiddenCommit = document.createElement('input');hiddenCommit.type = 'hidden';hiddenCommit.value = this.value;hiddenCommit.name = this.name;this.form.appendChild(hiddenCommit); }this.setAttribute('originalValue', this.value);this.disabled = true;this.value='Creating account...';result = (this.form.onsubmit ? (this.form.onsubmit() ? this.form.submit() : false) : this.form.submit());if (result == false) { this.value = this.getAttribute('originalValue');this.disabled = false; }return result;"
-                            type="submit" value="Create my account" />
+                        <input name="commit" onclick="submitAction()" type="submit" value="Create my account" />
                     </div>
                 </fieldset>
             </form>
 
         </div>
-        <div id="ft">
-
-        </div>
+        <footer>
+            <img alt="Footer" src="images/Footer.png" width="100%" />
+        </footer>
+        <!--<div style="background-image: url('images/Footer.png'); display: block; text-width:1000px;height:25px">
+            <img alt="Footer" src="images/Footer.png" style="display:block">
+        </div>-->
     </div>
 </body>
 

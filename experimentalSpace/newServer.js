@@ -1,14 +1,3 @@
-var http = require('http')
-var port = process.env.PORT || 1337;
-http.createServer(function(req, res) {
-    // res.writeHead(302, {
-    //     'Location': 'index.html'
-    // });
-    var opn = require('opn');
-    opn('index.html');
-    // res.end();
-}).listen(port);
-
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var express = require('express');
@@ -18,6 +7,16 @@ var app = express();
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
+
+app.listen(8080, function() {
+    console.log("Server running at http://localhost:8080/");
+});
+
+app.get('/', function(req, res) {
+    console.log("Redirecting to index.html");
+    var opn = require('opn');
+    opn('index.html');
+})
 
 app.post('/signup', function(request, response) {
     // console.log(request.body);
@@ -106,39 +105,6 @@ app.post('/signup', function(request, response) {
     sql.close();
 });
 
-function insertLang(username, language) {
-    if (language != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userLanguage (regUserName,language) values (' + username + ',' + language + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
-    }
-}
-
-function insertInt(username, interest) {
-    if (interest != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userInterest (regUserName,interest) values (' + username + ',' + interest + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
-    }
-}
-
-function insertExp(username, experience) {
-    if (experience != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userExperience (regUserName,experience) values (' + username + ',' + experience + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
-    }
-}
-
 app.get('/dashboard', function(request, response) {
     console.log(request.session);
     if (!request.session.user) {
@@ -189,6 +155,7 @@ app.post('/addConnection', function(request, response) {
             var addSuccess = recset.rowsAffected[0] === 1;
             if (addSuccess) {
                 console.log("Connection added succesfully");
+                // Go to dashboard
             } else {
                 console.log("Failed to add connection");
             }
@@ -205,30 +172,23 @@ app.post('/addConnection', function(request, response) {
 
 
 app.post('/postMessage', function(request, response) {
-    var user1 = "'" + request.body + "'";
-    var user2 = "'" + request.body + "'";
-    var message = "'" + request.body + "'";
-    var dateObj = new Date();
-    var currentDate = dateObj.getDate();
-    var currentMonth = dateObj.getMonth() + 1;
-    var currentYear = dateObj.getFullYear();
-    var currentHour = dateObj.getHours();
-    var currentMinute = dateObj.getMinutes();
-    var currentSecond = dateObj.getSeconds();
-    var dateString = "'" + currentYear + "-" + currentMonth + "-" + currentDate + " " + currentHour + ":" + currentMinute + ":" + currentSecond + "'";
+    var user1 = request.body;
+    var user2 = request.body;
+    var message = request.body;
+
 
     sql.connect(config).then(() => {
         req = new sql.Request();
-        sqlStat = 'insert into userChats (sender,receiver,message,messageTime) values (' + user1 + ',' + user2 + ',' + message + ',' + dateString + ')';
+        sqlStat = 'insert into userConnection (primaryRegUser,connection) values (' + user1 + ',' + user2 + ')';
         req.query(sqlStat, function(err, recset) {
             var addSuccess = recset.rowsAffected[0] === 1;
             if (addSuccess) {
-                console.log("Chat message added succesfully");
+                console.log("Connection added succesfully");
                 // Go to dashboard
             } else {
-                console.log("Failed to add chat message");
+                console.log("Failed to add connection");
             }
-            response.writeHead(200, "");
+            response.writeHead(204, "");
             response.end();
             sql.close();
         });
@@ -237,10 +197,6 @@ app.post('/postMessage', function(request, response) {
     }).catch(err => {
         console.dir(err);
     })
-});
-
-app.listen(8080, function() {
-    console.log("POST server running at http://localhost:8080/");
 });
 
 ////////////////////////////////////////////////////// SQL SECTION AHEAD
@@ -254,5 +210,38 @@ const config = {
     tableName: 'testtable',
     options: {
         encrypt: true // Use this if you're on Windows Azure
+    }
+}
+
+function insertLang(username, language) {
+    if (language != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userLanguage (regUserName,language) values (' + username + ',' + language + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
+    }
+}
+
+function insertInt(username, interest) {
+    if (interest != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userInterest (regUserName,interest) values (' + username + ',' + interest + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
+    }
+}
+
+function insertExp(username, experience) {
+    if (experience != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userExperience (regUserName,experience) values (' + username + ',' + experience + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
     }
 }

@@ -1,0 +1,13 @@
+var dateObj = new Date();
+var currentDate = dateObj.getDate();
+var currentMonth = dateObj.getMonth() + 1;
+var currentYear = dateObj.getFullYear();
+var currentHour = dateObj.getHours();
+var currentMinute = dateObj.getMinutes();
+var currentSecond = dateObj.getSeconds();
+console.log(currentDate);
+console.log(currentMonth);
+console.log(currentYear);
+console.log(currentHour);
+console.log(currentMinute);
+console.log(currentSecond);

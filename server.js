@@ -15,16 +15,28 @@ var app = express();
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/testDB', function(request, response) {
-    callThisToTest();
-    console.log('Hurray you called this method');
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end();
+app.post('/signup', function(request, response) {
+    // console.log(request.body);
+    var username = request.body.user.username;
+    var password = request.body.user.password;
+    var email = request.body.user.email;
+    var agegroup = request.body.user.age;
+    var country = request.body.company.country_id;
+    var prefLanguage = request.body.user.language;
+    var otherLanguage = request.body.user.otherlang;
+    var aboutme = request.body.user.aboutme;
+    console.log(username);
+    console.log(password);
+    console.log(email);
+    console.log(agegroup);
+    console.log(country);
+    console.log(prefLanguage);
+    console.log(otherLanguage);
+    console.log(aboutme);
 });
 
-app.listen(8000, function() {
-    const opn = require('opn')
-    opn('index.html')
+app.listen(8080, function() {
+    console.log("POST server running at http://127.0.0.1:8080/");
 });
 
 ////////////////////////////////////////////////////// SQL SECTION AHEAD

@@ -2,95 +2,101 @@
 <html>
 
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<script type='text/javascript' src='js/jquery.js'></script>
-<script type='text/javascript' src='js/profilePage.js'></script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script type='text/javascript' src='js/jquery.js'></script>
+    <script type='text/javascript' src='js/profilePage.js'></script>
+    <script>
+        $(document).ready(function() {
 
-<link href="css/profile.css" rel="stylesheet" type="text/css">
-
-<title>Find An E-Pal</title>
+        });
+    </script>
+    <link href="css/profile.css" rel="stylesheet" type="text/css">
+    <title>Find An E-Pal</title>
 </head>
 
 <body>
-		<header><img class="header" src="images/MenuDropDown.png" alt="footer">
+    <header><img class="header" src="images/MenuDropDown.png" alt="footer">
 
-</header>
+    </header>
 
-		<div id="container">
-		 <div class="heading">
-               My Profile
+    <div id="container">
+        <div class="heading">
+            My Profile
+        </div>
+
+        <article>
+            <div id="leftSection">
+                <p id="displayname">Osheen</p>
+
+                <img id="profileThumbnail" src="images/profile_photo.png" alt="profilePhoto">
+                <div class="editPhoto">
+                    <span>Edit Photo </span>
+                    <input class="choosePhoto" type="file" accept="image/*" onchange="editProfilePhoto(this)"> </div>
+                <hr class="heartsection">
+
+                <p id="connectionNum">100</p>
+                <p id="connection">Connections</p>
+                <hr class="heartsection">
+                <button class="signout">Sign Out</button>
+
+
             </div>
 
-		<article>
-		 <div id="leftSection">
-		    <p id="displayname">Osheen</p>
-			
-		 	<img id="profileThumbnail" src="images/profile_photo.png" alt="profilePhoto">
-		 	<div class="editPhoto">
-	    		<span>Edit Photo </span> 
-			<input class="choosePhoto" type="file" accept="image/*" onchange="editProfilePhoto(this)"> </div>
-		 	<hr class="heartsection">
-		 	
-		 	<p id="connectionNum">100</p>
-		 	<p id="connection">Connections</p>
-		 	<hr class="heartsection">
-			<button class="signout" >Sign Out</button>
+            <div id="rightSection">
+                <div id="header">
+                    <p>
+                        <h1>Profile</h1>
+                    </p>
+                    <div id="sectionName">PERSONAL INFO</div>
+
+                </div>
+                <hr />
+                <div id="content">
+                    <form class="personalInfo" name="personalInfo" methord="post" action="">
+                        <ul>
+                            <li>
+                                <label class="nameLabel">Name : </label>
+                                <p id="name">Osheen</p>
+                                <br>
+                            </li>
+                            <li>
+                                <label class="ageLabel">Age : </label>
+                                <p id="age">18</p>
+                                <br>
+                            </li>
+                            <li>
+                                <label class="countryLabel">Country : </label>
+                                <p id="country">Sri Lanka</p>
+                                <br>
+                            </li>
+                            <li>
+                                <label class="interestLable">Interest : </label>
+                                <p id="interest">Horror Movie</p>
+                                <br>
+                            </li>
+                            <li>
+                                <label class="experienceLabel">Experience : </label>
+                                <p id="experience">Memtor</p>
+                                <br>
+                            </li>
+                            <li>
+                                <label class="aboutmeLabel">About Me : </label>
+                                <p id="aboutme">I love chololate</p>
+                            </li>
 
 
-		 </div>
-		 
-		 <div id="rightSection">
-		 <div id="header">
-			<p><h1>Profile</h1></p>	
-			<div id="sectionName">PERSONAL INFO</div>
+                        </ul>
 
-				</div>
-				<hr />
-			<div id="content">
-						<form class="personalInfo" name="personalInfo" methord="post" action=""> 
-				<ul>					
-					 <li>
-							<label class="nameLabel">Name : </label>	
-									<p id="name">Osheen</p>
-									<br>
-								</li>								<li>
-									<label class="ageLabel" >Age : </label>	
-									<p id="age">18</p>
-									<br>
-								</li>
-								<li>
-									<label class="countryLabel" >Country : </label>	
-									<p id="country">Sri Lanka</p >
-								<br>
-								</li>	
-								<li>
-									<label class="interestLable" >Interest : </label>	
-									<p id="interest">Horror Movie</p >
-								<br>
-								</li>
-								<li>
-									<label class="experienceLabel" >Experience : </label>	
-									<p id="experience">Memtor</p >
-								<br>
-								</li>
-								<li>
-									<label class="aboutmeLabel" >About Me : </label>	
-									<p id="aboutme">I love chololate</p>
-								</li>
-							
-	
-							</ul>					   
-	
 
-			</form>
-			<button id="editProfile" >Edit Profile</button>
+                    </form>
+                    <button id="editProfile">Edit Profile</button>
 
-		</div>
-			</div>
-  		</article>
-  		
-</div>
-<!--  -->  		
-  	</body>
+                </div>
+            </div>
+        </article>
+
+    </div>
+    <!--  -->
+</body>
 
 </html>

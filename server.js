@@ -139,14 +139,14 @@ function insertExp(username, experience) {
     }
 }
 
-app.get('/dashboard', function(request, response) {
-    console.log(request.session);
-    if (!request.session.user) {
-        return response.status(403).send();
-    } else {
-        return response.status(200).send("Welcome");
-    }
-});
+// app.get('/dashboard', function(request, response) {
+//     console.log(request.session);
+//     if (!request.session.user) {
+//         return response.status(403).send();
+//     } else {
+//         return response.status(200).send("Welcome");
+//     }
+// });
 
 app.post('/login', function(request, response) {
     var user = "'" + request.body.user + "'";

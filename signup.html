@@ -20,54 +20,17 @@
 
     <script src="https://assets2.goplanapp.com/javascripts/wbs_tip.js?1389567503" type="text/javascript"></script>
     <script src="app.js" type="text/javascript"></script>
-    <script type="text/javascript" defer="true">
-        document.observe('dom:loaded', function() {
-            $('company_alias').onchange = function(e) {
-                new WBS.AjaxValidation('/validate/company', $(this.form), 'alias', null, "");
-            };
-            $('promocode').onblur = function(e) {
-                new WBS.AjaxValidation('/account/check_promocode', $(this.form), 'promocode', null, "");
-            };
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-86888-18']);
-        _gaq.push(['_setDomainName', 'goplanapp.com']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
 </head>
 
 <body>
     <div id="top_bar" class="yui-g">
         <div class="yui-u first">
-            <strong>Goplan</strong>
-        </div>
-        <div class="yui-u ar">
-            <span class="rounded">
-				<span style="font-size: 10px; color: #666">Powered by Goplan</span>
-            </span>
+            <strong>Penpal</strong>
         </div>
     </div>
 
     <div id="doc3">
         <div id="bd">
-
-
-
-
-
             <form action="/account/signup" id="signup" method="post">
                 <div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="ALItNv9ezCxfyxm0ycLfiAueN1nYKyXoyljKy/e+Jmk=" /></div>
 
@@ -357,12 +320,41 @@
                     <h2 class="lmt">
                         <img alt="Step2" class="va" src="https://assets0.goplanapp.com/images/step2.png?1389567503" /> Interests and Expertise
                     </h2>
-                    <p class="lh mb f11 lg">The second (and final) thing you need to sign-up is to create your first user account (typically yours). You should also choose your timezone so we can show you dates and times adjusted to your location.</p>
-                    Books<input type="checkbox" name="interst" value="Bike"> Interested <input type="checkbox" name="vehicle" value="Car" checked> Expertised<br>
+                    <table>
+                        <tr>
+                            <td>Books</td>
+                            <td><input type="checkbox" name="interest" value="Books"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Books"> Expertised</td>
+                        </tr>
+                        <tr>
+                            <td>Career</td>
+                            <td><input type="checkbox" name="interest" value="Career"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Career"> Expertised</td>
+                        </tr>
+                        <tr>
+                            <td>Education</td>
+                            <td><input type="checkbox" name="interest" value="Education"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Education"> Expertised</td>
+                        </tr>
+                        <tr>
+                            <td>Food</td>
+                            <td><input type="checkbox" name="interest" value="Food"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Food"> Expertised</td>
+                        </tr>
+                        <tr>
+                            <td>Sports</td>
+                            <td><input type="checkbox" name="interest" value="Sports"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Sports"> Expertised</td>
+                        </tr>
+                        <tr>
+                            <td>Travel</td>
+                            <td><input type="checkbox" name="interest" value="Travel"> Interested </td>
+                            <td><input type="checkbox" name="expertise" value="Travel"> Expertised</td>
+                        </tr>
+                    </table>
                     <h2 class="lmt">
-                        <img alt="Step3" class="va" src="https://assets0.goplanapp.com/images/step3.png?1389567503" /> About you
+                        <img alt="Step3" class="va" src="https://assets0.goplanapp.com/images/step3.png?1389567503" /> About Me
                     </h2>
-                    <p class="lh mb f11 lg">The second (and final) thing you need to sign-up is to create your first user account (typically yours). You should also choose your timezone so we can show you dates and times adjusted to your location.</p>
                     <div class="field">
                         <label for="aboutme">About Me</label>
                         <textarea id="aboutme" name="user[aboutme]" rows="4" cols=""></textarea>
@@ -370,9 +362,9 @@
                     <div class="field">
                         <div class="box">
 
-                            <p class="lh mb f11 lg">You are almost done! Double check everything you typed in, and after agreeing to our Terms of Service, click the button to create your account and start using Goplan! We hope you like it!</p>
+                            <p class="lh mb f11 lg">You are almost done! Double check everything you typed in, and after agreeing to our age restriction, click the button to create your account and start using penpal! We hope you like it!</p>
 
-                            <input name="tos" value="0" type="hidden"> <input id="tos" name="tos" type="checkbox" value="1" /> <label style="display:inline; font-size: 11px" for="tos">I agree with Goplan's <a href="/home/tos" target="_BLANK">Terms of Service</a> and <a href="/home/privacy" target="_BLANK">Privacy Policy</a></label>
+                            <input name="tos" value="0" type="hidden"> <input id="tos" name="tos" type="checkbox" value="1" /> <label style="display:inline; font-size: 11px" for="tos">I am 13 years or older </label>
                         </div>
                     </div>
 
@@ -385,7 +377,7 @@
 
         </div>
         <div id="ft">
-            Powered by <strong>Goplan</strong> / <span class="hl"><a href="http://help.goplanapp.com">Get Help</a></span>
+
         </div>
     </div>
 </body>

@@ -25,14 +25,18 @@ app.post('/signup', function(request, response) {
     var prefLanguage = request.body.user.language;
     var otherLanguage = request.body.user.otherlang;
     var aboutme = request.body.user.aboutme;
-    console.log(username);
-    console.log(password);
-    console.log(email);
-    console.log(agegroup);
-    console.log(country);
-    console.log(prefLanguage);
-    console.log(otherLanguage);
-    console.log(aboutme);
+    var booksInterest = request.body.interest.books;
+    var careerInterest = request.body.interest.career;
+    var educationInterest = request.body.interest.education;
+    var foodInterest = request.body.interest.food;
+    var sportsInterest = request.body.interest.sports;
+    var travelInterest = request.body.interest.travel;
+    var booksExpertise = request.body.expertise.books;
+    var careerExpertise = request.body.expertise.career;
+    var educationExpertise = request.body.expertise.education;
+    var foodExpertise = request.body.expertise.food;
+    var sportsExpertise = request.body.expertise.sports;
+    var travelExpertise = request.body.expertise.travel;
 });
 
 app.listen(8080, function() {

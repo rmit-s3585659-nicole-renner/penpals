@@ -7,13 +7,22 @@ http.createServer(function(req, res) {
     res.end('Hello World. I"m alive!!!!!\n');
 }).listen(port);
 
-var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-sessions');
+var express = require('express');
 var app = express();
 
 //Note that in version 4 of express, express.bodyParser() was
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(sessions({
+    cookieName: 'mySession', // cookie name dictates the key name added to the request object
+    secret: 'blargadeeblargblarg', // should be a large unguessable string
+    duration: 24 * 60 * 60 * 1000, // how long the session will stay valid in ms
+    activeDuration: 1000 * 60 * 5 // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds
+}));
+
 
 app.post('/signup', function(request, response) {
     // console.log(request.body);
@@ -135,6 +144,14 @@ function insertExp(username, experience) {
     }
 }
 
+app.get('/dashboard', function(request, response) {
+    if (!req.session.user) {
+        return response.status(403).send();
+    } else {
+        return response.status(200).send("Welcome");
+    }
+});
+
 app.post('/login', function(request, response) {
     var user = "'" + request.body.user + "'";
     var pass = "'" + request.body.password + "'";
@@ -147,6 +164,7 @@ app.post('/login', function(request, response) {
             var loginSuccess = recordset.rowsAffected[0] === 1;
             if (loginSuccess) {
                 console.log("LOGIN SUCCESS!");
+                request.session.user = user;
                 // Go to dashboard
             } else {
                 console.log("LOGIN FAILED!");

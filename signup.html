@@ -17,12 +17,29 @@
     <script>
         function submitAction() {
             var valid = true;
-            if (!document.getElementById(user[username]).value) {
+            if (!document.getElementById("username").value) {
                 valid = false;
-                document.getElementById("user[username]").style.borderColor = red;
+                document.getElementById("username").style.borderColor = red;
+            }
+            if (!document.getElementById("password").value) {
+                valid = false;
+                document.getElementById("password").style.borderColor = red;
+            }
+            if (!document.getElementById("repassword").value) {
+                valid = false;
+                document.getElementById("repassword").style.borderColor = red;
+            }
+            if (!document.getElementById("email").value) {
+                valid = false;
+                document.getElementById("email").style.borderColor = red;
+            }
+            if (!document.getElementById("age").value) {
+                valid = false;
+                document.getElementById("age").style.borderColor = red;
             }
             if (valid)
-                window.top.location = 'http://localhost:8080/signup';
+                document.getElementById("signup").submit();
+            //window.top.location = 'http://localhost:8080/signup';
         }
     </script>
     <!--link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
@@ -47,7 +64,7 @@
 
     <div id="doc3">
         <div id="bd">
-            <form id="signup" method="post">
+            <form id="signup" action="http://localhost:8080/signup" method="post">
                 <div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="ALItNv9ezCxfyxm0ycLfiAueN1nYKyXoyljKy/e+Jmk=" /></div>
 
                 <h1 class="c">Registration</h1>

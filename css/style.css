@@ -47,13 +47,15 @@ body {
 .header div {
     float: left;
     color: #fff;
+    text-shadow: 2px 2px #008B8B;
     font-family: 'Exo', sans-serif;
     font-size: 50px;
-    font-weight: 200;
+    font-weight: 600;
 }
 
 .header div span {
-    color: #5379fa !important;
+    color: #008B8B !important;
+    text-shadow: 2px 2px #ffffff;
 }
 
 .login {
@@ -77,6 +79,7 @@ body {
     font-size: 20px;
     font-weight: 400;
     padding: 4px;
+    text-align: center;
 }
 
 .login input[type=password] {
@@ -91,6 +94,7 @@ body {
     font-weight: 400;
     padding: 4px;
     margin-top: 10px;
+    text-align: center;
 }
 
 .login input[type=button] {
@@ -100,7 +104,7 @@ body {
     border: 1px solid #fff;
     cursor: pointer;
     border-radius: 2px;
-    color: #a18d6c;
+    color: #008B8B;
     font-family: 'Exo', sans-serif;
     font-size: 20px;
     font-weight: 400;
@@ -115,7 +119,7 @@ body {
     border: 1px solid #fff;
     cursor: pointer;
     border-radius: 2px;
-    color: #a18d6c;
+    color: #008B8B;
     font-family: 'Exo', sans-serif;
     font-size: 20px;
     font-weight: 400;
@@ -163,4 +167,9 @@ body {
 
 ::-moz-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
+}
+
+hr {
+    margin-top: 20px;
+    width: 400px;
 }

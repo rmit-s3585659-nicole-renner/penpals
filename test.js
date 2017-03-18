@@ -1,2 +1,2 @@
-var car = { type: "Fiat", model: "500", color: "white" };
-console.log(car);
+    var moment = require("moment");
+    console.log(moment().format('dddd'));

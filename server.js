@@ -165,10 +165,25 @@ app.post('/login', function(request, response) {
 
 
 app.post('/addConnection', function(request, response) {
-    var user1;
-    var user2;
+    var user1 = request.body;
+    var user2 = request.body;
 
-    sql.connect(config).then(() => {}).then(result => {
+    sql.connect(config).then(() => {
+        req = new sql.Request();
+        sqlStat = 'insert into userConnection (primaryRegUser,connection) values (' + user1 + ',' + user2 + ')';
+        req.query(sqlStat, function(err, recset) {
+            var addSuccess = recordset.rowsAffected[0] === 1;
+            if (addSuccess) {
+                console.log("Connection added succesfully");
+                // Go to dashboard
+            } else {
+                console.log("Failed to add connection");
+            }
+            response.writeHead(204, "");
+            response.end();
+            sql.close();
+        });
+    }).then(result => {
         console.dir(result);
     }).catch(err => {
         console.dir(err);
@@ -177,11 +192,26 @@ app.post('/addConnection', function(request, response) {
 
 
 app.post('/postMessage', function(request, response) {
-    var user1;
-    var user2;
+    var user1 = request.body;
+    var user2 = request.body;
+    var message = request.body;
+
 
     sql.connect(config).then(() => {
-
+        req = new sql.Request();
+        sqlStat = 'insert into userConnection (primaryRegUser,connection) values (' + user1 + ',' + user2 + ')';
+        req.query(sqlStat, function(err, recset) {
+            var addSuccess = recordset.rowsAffected[0] === 1;
+            if (addSuccess) {
+                console.log("Connection added succesfully");
+                // Go to dashboard
+            } else {
+                console.log("Failed to add connection");
+            }
+            response.writeHead(204, "");
+            response.end();
+            sql.close();
+        });
     }).then(result => {
         console.dir(result);
     }).catch(err => {
@@ -205,28 +235,4 @@ const config = {
     options: {
         encrypt: true // Use this if you're on Windows Azure
     }
-}
-
-function callThisToTest() {
-    var username = "\'user\'";
-    var email = "\'email\'";
-    var country = "\'country\'";
-    var agegroup = 1;
-    var preferredlanguage = "\'language\'";
-    var aboutme = "\'aboutme\'";
-    //var profilepic = "\'null\'";
-    sql.connect(config).then(() => {
-        var request = new sql.Request();
-        var sqlStatement = 'insert into regUser (regUserName,email,country,agegroup,preferredlanguage,aboutme) values (' + username + ',' + email + ',' + country + ',' + agegroup + ',' + preferredlanguage + ',' + aboutme + ')';
-        console.log(sqlStatement)
-        request.query(sqlStatement, function(err, recordset) {
-            console.log(err);
-            console.log(recordset);
-        });
-        return;
-    }).then(result => {
-        console.dir(result);
-    }).catch(err => {
-        console.dir(err);
-    })
 }

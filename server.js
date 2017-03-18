@@ -27,38 +27,52 @@ app.post('/signup', function(request, response) {
     var otherLanguage = "'" + request.body.user.otherlang + "'";
     var aboutme = "'" + request.body.user.aboutme + "'";
 
-    var booksInterest = "'" + request.body.interest.books + "'";
-    var careerInterest = "'" + request.body.interest.career + "'";
-    var educationInterest = "'" + request.body.interest.education + "'";
-    var foodInterest = "'" + request.body.interest.food + "'";
-    var sportsInterest = "'" + request.body.interest.sports + "'";
-    var travelInterest = "'" + request.body.interest.travel + "'";
-    var booksExpertise = "'" + request.body.expertise.book + "'";
-    var careerExpertise = "'" + request.body.expertise.career + "'";
-    var educationExpertise = "'" + request.body.expertise.education + "'";
-    var foodExpertise = "'" + request.body.expertise.food + "'";
-    var sportsExpertise = "'" + request.body.expertise.sports + "'";
-    var travelExpertise = "'" + request.body.expertise.travel + "'";
+    var booksInterest = "";
+    var careerInterest = "";
+    var educationInterest = "";
+    var foodInterest = "";
+    var sportsInterest = "";
+    var travelInterest = "";
+    var booksExpertise = "";
+    var careerExpertise = "";
+    var educationExpertise = "";
+    var foodExpertise = "";
+    var sportsExpertise = "";
+    var travelExpertise = "";
 
-    console.log(request.body.expertise);
+    if (request.body.interest != undefined) {
+        booksInterest = "'" + request.body.interest.books + "'";
+        careerInterest = "'" + request.body.interest.career + "'";
+        educationInterest = "'" + request.body.interest.education + "'";
+        foodInterest = "'" + request.body.interest.food + "'";
+        sportsInterest = "'" + request.body.interest.sports + "'";
+        travelInterest = "'" + request.body.interest.travel + "'";
+    }
+    if (request.body.expertise != undefined) {
+        booksExpertise = "'" + request.body.expertise.book + "'";
+        careerExpertise = "'" + request.body.expertise.career + "'";
+        educationExpertise = "'" + request.body.expertise.education + "'";
+        foodExpertise = "'" + request.body.expertise.food + "'";
+        sportsExpertise = "'" + request.body.expertise.sports + "'";
+        travelExpertise = "'" + request.body.expertise.travel + "'";
+    }
 
     sql.connect(config).then(() => {
 
         //insert to regUser table
         var request1 = new sql.Request();
-        var sqlStatement1 = 'insert into regUser (regUserName,email,country,agegroup,preferredlanguage,aboutme) values (' + username + ',' + email + ',' + country + ',' + agegroup + ',' + prefLanguage + ',' + aboutme + ')';
+        var sqlStatement1 = 'insert into regUser (regUserName,email,country,groupid,preferredlanguage,aboutme) values (' + username + ',' + email + ',' + country + ',' + agegroup + ',' + prefLanguage + ',' + aboutme + ')';
         request1.query(sqlStatement1, function(err, recordset1) {
-            if (recordset1[0] > 0) { //if insertion is successful to user table
-            }
+            console.log(err);
+            console.log(recordset1);
         });
 
         //insert to credentials table
         var request2 = new sql.Request();
         var sqlStatement2 = 'insert into credentials (regUserName,password) values (' + username + ',' + password + ')';
         request2.query(sqlStatement2, function(err, recordset2) {
-            if (recordset2[0] > 0) { //if insertion is successful to credential table
-
-            }
+            console.log(err);
+            console.log(recordset2);
         });
 
         insertLang(username, otherLanguage);
@@ -89,9 +103,8 @@ function insertLang(username, language) {
         req = new sql.Request();
         sqlStat = 'insert into userLanguage (regUserName,language) values (' + username + ',' + language + ')';
         req.query(sqlStat, function(err, recset) {
-            if (recset[0] > 0) { //if insertion is successful to credential table
-                console.log();
-            }
+            console.log(err);
+            console.log(recset);
         });
     }
 }
@@ -101,9 +114,8 @@ function insertInt(username, interest) {
         req = new sql.Request();
         sqlStat = 'insert into userInterest (regUserName,interest) values (' + username + ',' + interest + ')';
         req.query(sqlStat, function(err, recset) {
-            if (recset[0] > 0) { //if insertion is successful to credential table
-                console.log();
-            }
+            console.log(err);
+            console.log(recset);
         });
     }
 }
@@ -113,13 +125,11 @@ function insertExp(username, experience) {
         req = new sql.Request();
         sqlStat = 'insert into userExperience (regUserName,experience) values (' + username + ',' + experience + ')';
         req.query(sqlStat, function(err, recset) {
-            if (recset[0] > 0) { //if insertion is successful to credential table
-                console.log();
-            }
+            console.log(err);
+            console.log(recset);
         });
     }
 }
-
 
 // function login(user, pass) {
 app.post('/login', function(request, response) {
@@ -129,6 +139,9 @@ app.post('/login', function(request, response) {
         console.dir("Trying to login");
         var request = new sql.Request();
         request.query("select * from credentials where username=" + user + " password=" + pass, function(err, recordset) {
+            console.log(recordset);
+            console.log(recordset.rowsAffected[0]);
+            console.log(recordset[0].rowsAffected[0]);
             console.log(recordset[0].number);
         });
         return;

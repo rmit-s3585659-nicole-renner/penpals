@@ -2879,8 +2879,8 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #008B8B;
+  border-color: #008B8B;
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -4776,6 +4776,7 @@ a.thumbnail.active {
 .media-body {
   overflow: hidden;
   zoom: 1;
+	margin-left: 0px;
 }
 .media,
 .media .media {

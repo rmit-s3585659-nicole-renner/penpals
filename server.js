@@ -1,13 +1,13 @@
-var http = require('http')
-var port = process.env.PORT || 1337;
-http.createServer(function(req, res) {
-    // res.writeHead(302, {
-    //     'Location': 'index.html'
-    // });
-    var opn = require('opn');
-    opn('index.html');
-    // res.end();
-}).listen(port);
+// var http = require('http')
+// var port = process.env.PORT || 1337;
+// http.createServer(function(req, res) {
+//     // res.writeHead(302, {
+//     //     'Location': 'index.html'
+//     // });
+//     var opn = require('opn');
+//     opn('index.html');
+//     // res.end();
+// }).listen(port);
 
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -21,7 +21,7 @@ app.use(express.static(__dirname));
 //app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
 
 app.post('/signup', function(request, response) {
-    // console.log(request.body);
+    console.log("sql start");
     var username = "'" + request.body.user.username + "'";
     var password = "'" + request.body.user.password + "'";
 
@@ -96,6 +96,8 @@ app.post('/signup', function(request, response) {
         insertExp(username, sportsExpertise);
         insertExp(username, travelExpertise);
 
+        response.redirect(301, 'chatPage.html');
+
         // go to dashboard
 
         return;
@@ -162,7 +164,7 @@ app.post('/login', function(request, response) {
             sql.close();
             if (loginSuccess) {
                 console.log("LOGIN SUCCESS!");
-                response.redirect(301, 'localhost/loginTest.html');
+                response.redirect(301, 'chatPage.html');
             } else {
                 console.log("LOGIN FAILED!");
                 return response.status(204).send("Login failed");
@@ -202,7 +204,23 @@ app.post('/addConnection', function(request, response) {
     })
 });
 
-app.get('/getMessage', function(request, response) {
+app.post('/getProfile', function(request, response) {
+    var username = "'" + request.body.username + "'";
+    sql.connect(config).then(() => {
+        req = new sql.Request();
+        sqlStat = 'select * from regUser where regUserName=' + username;
+        req.query(sqlStat, function(err, recset) {
+            response.status(200).send(JSON.stringify(recset));
+            sql.close();
+        });
+    }).then(result => {
+        console.dir(result);
+    }).catch(err => {
+        console.dir(err);
+    })
+});
+
+app.post('/getMessage', function(request, response) {
     console.log(request.body);
 });
 
@@ -210,7 +228,6 @@ app.post('/postMessage', function(request, response) {
     var user1 = request.body;
     var user2 = request.body;
     var message = request.body;
-
 
     sql.connect(config).then(() => {
         req = new sql.Request();

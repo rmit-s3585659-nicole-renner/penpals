@@ -6,9 +6,53 @@
     <script type='text/javascript' src='js/jquery.js'></script>
     <script type='text/javascript' src='js/profilePage.js'></script>
     <script>
-        $(document).ready(function() {
+        function agegroup(inp) {
+            switch (inp) {
+                case 0:
+                    return "13-18";
+                    break;
+                case 1:
+                    return "19-30";
+                    break;
+                case 2:
+                    return "31-45";
+                    break;
+                case 3:
+                    return "46-60";
+                    break;
+                case 4:
+                    return "61-80";
+                    break;
+                case 5:
+                    return "80+";
+                    break;
+            }
+        }
 
-        });
+        $(document).ready(function() {
+            $.post("/getProfile", {
+                username: "osh"
+            }).done(function(data) {
+                var data = JSON.parse(data).recordsets[0][0];
+                var aboutMe = data.aboutMe;
+                var country = data.country;
+                var email = data.email;
+                var groupID = data.groupID;
+                var preferredLanguage = data.preferredLanguage;
+                var profilePic = data.profilePic;
+                var regUserName = data.regUserName;
+                var status = data.status;
+                $("#name").text(regUserName)
+                $("#age").text(agegroup(groupID))
+                $("#country").text(country)
+                $("#interest").text("")
+                $("#experience").text("")
+                $("#aboutme").text(aboutMe)
+
+                console.log(data);
+                // var 
+            });
+        })
     </script>
     <link href="css/profile.css" rel="stylesheet" type="text/css">
     <title>Find An E-Pal</title>

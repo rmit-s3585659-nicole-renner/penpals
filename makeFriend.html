@@ -5,82 +5,35 @@
     <meta charset="UTF-8">
     <title>Make Friends</title>
     <link rel="stylesheet" type="text/css" href="css/makeFriend.css">
+    <link rel="stylesheet" type="text/css" href="css/menuDropdown.css">
 </head>
 
 <body>
     <header>
-        <img alt="Header" src="images/Header.png" width="100%" />
+        <img alt="Header" src="images/header.png" width="96%" />
+        <span id="primary_nav_wrap" width="5%">
+            <ul>
+                <li>
+                    <img src="images/MenuDropDown.png">
+                    <ul id="innerUl">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="makeFriend.html">Make Friends</a></li>
+                        <li><a href="index.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </span>
     </header>
-    <!--<table>
-        <tr>
-            <td>
-                <div>
-                    <span class="figureDiv">
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
-                </span>
-                    <span class="nameDiv">
-                    <aside>94%</aside>
-                    <aside>Purwa</aside>
-                </span>
-                </div>
-                <section class="lower">
-                    <div>Sports</div>
-                    <div>Food</div>
-                    <div>Travel</div>
-                    <div>Books</div>
-                </section>
-            </td>
-            <td>
-                <div>
-                    <span class="figureDiv">
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
-                </span>
-                    <span class="nameDiv">
-                    <aside>94%</aside>
-                    <aside>Purwa</aside>
-                </span>
-                </div>
-                <section class="lower">
-                    <div>Sports</div>
-                    <div>Food</div>
-                    <div>Travel</div>
-                    <div>Books</div>
-                </section>
-            </td>
-            <td>
-                <div>
-                    <span class="figureDiv">
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
-                </span>
-                    <span class="nameDiv">
-                    <aside>94%</aside>
-                    <aside>Purwa</aside>
-                </span>
-                </div>
-                <section class="lower">
-                    <div>Sports</div>
-                    <div>Food</div>
-                    <div>Travel</div>
-                    <div>Books</div>
-                </section>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>-->
     <section class="mainSection">
-
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo">
+                    <img class="img-circle" src="images/a.jpg" alt="Photo">
                 </div>
                 <div class="textDiv">
                     <text>94%</text>
-                    <text>Osheen</text>
+                    <text>Jan</text>
                 </div>
             </section>
             <section class="lower">
@@ -94,11 +47,11 @@
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                    <img class="img-circle" src="images/b.jpg" alt="Photo" width="50px" height="50px">
                 </div>
                 <div class="textDiv">
                     <text>90%</text>
-                    <text>Purwa</text>
+                    <text>Paul</text>
                 </div>
             </section>
             <section class="lower">
@@ -112,17 +65,53 @@
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                    <img class="img-circle" src="images/c.jpg" alt="Photo" width="50px" height="50px">
                 </div>
                 <div class="textDiv">
                     <text>83%</text>
-                    <text>Nicole</text>
+                    <text>Adam</text>
                 </div>
             </section>
             <section class="lower">
                 <text>Sports</text>
                 <text>Career</text>
                 <text>Travel</text>
+                <text>Books</text>
+            </section>
+            <input name="commit" onclick="" type="button" value="Connect" />
+        </article>
+        <article>
+            <section class="upper">
+                <div>
+                    <img class="img-circle" src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                </div>
+                <div class="textDiv">
+                    <text>69%</text>
+                    <text>David</text>
+                </div>
+            </section>
+            <section class="lower">
+                <text>Sports</text>
+                <text>Food</text>
+                <text>Education</text>
+                <text></text>
+            </section>
+            <input name="commit" onclick="" type="button" value="Connect" />
+        </article>
+        <article>
+            <section class="upper">
+                <div>
+                    <img class="img-circle" src="images/d.jpg" alt="Photo" width="50px" height="50px">
+                </div>
+                <div class="textDiv">
+                    <text>60%</text>
+                    <text>Micheal</text>
+                </div>
+            </section>
+            <section class="lower">
+                <text>Books</text>
+                <text>Food</text>
+                <text>Education</text>
                 <text></text>
             </section>
             <input name="commit" onclick="" type="button" value="Connect" />
@@ -132,15 +121,15 @@
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                    <img class="img-circle" src="images/e.jpg" alt="Photo" width="50px" height="50px">
                 </div>
                 <div class="textDiv">
-                    <text>69%</text>
-                    <text>David</text>
+                    <text>54%</text>
+                    <text>Sussan</text>
                 </div>
             </section>
             <section class="lower">
-                <text>Travel</text>
+                <text>Career</text>
                 <text>Food</text>
                 <text>Education</text>
                 <text></text>
@@ -150,15 +139,15 @@
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                    <img class="img-circle" src="images/f.jpg" alt="Photo" width="50px" height="50px">
                 </div>
                 <div class="textDiv">
-                    <text>43%</text>
-                    <text>Sonya</text>
+                    <text>46%</text>
+                    <text>Anna</text>
                 </div>
             </section>
             <section class="lower">
-                <text>Career</text>
+                <text>Education</text>
                 <text>Food</text>
                 <text></text>
                 <text></text>
@@ -168,16 +157,52 @@
         <article>
             <section class="upper">
                 <div>
-                    <img src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                    <img class="img-circle" src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                </div>
+                <div class="textDiv">
+                    <text>40%</text>
+                    <text>Prajakta</text>
+                </div>
+            </section>
+            <section class="lower">
+                <text>Travel</text>
+                <text>Food</text>
+                <text></text>
+                <text></text>
+            </section>
+            <input name="commit" onclick="" type="button" value="Connect" />
+        </article>
+        <article>
+            <section class="upper">
+                <div>
+                    <img class="img-circle" src="images/g.jpg" alt="Photo" width="50px" height="50px">
                 </div>
                 <div class="textDiv">
                     <text>29%</text>
-                    <text>Jan</text>
+                    <text>Pranav</text>
                 </div>
             </section>
             <section class="lower">
                 <text>Sports</text>
+                <text></text>
+                <text></text>
+                <text></text>
+            </section>
+            <input name="commit" onclick="" type="button" value="Connect" />
+        </article>
+        <article>
+            <section class="upper">
+                <div>
+                    <img class="img-circle" src="images/profile_photo.png" alt="Photo" width="50px" height="50px">
+                </div>
+                <div class="textDiv">
+                    <text>20%</text>
+                    <text>Suriana</text>
+                </div>
+            </section>
+            <section class="lower">
                 <text>Travel</text>
+                <text></text>
                 <text></text>
                 <text></text>
             </section>
@@ -185,6 +210,6 @@
         </article>
     </section>
     <footer>
-        <img alt="Footer" src="images/Footer.png" width="100%" />
+        <img alt="Footer" src="images/footer.png" width="100%" />
     </footer>
 </body>

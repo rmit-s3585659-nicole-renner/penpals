@@ -17,7 +17,8 @@ var app = express();
 //Note that in version 4 of express, express.bodyParser() was
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
+app.use(express.static(__dirname));
+//app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
 
 app.post('/signup', function(request, response) {
     // console.log(request.body);
@@ -161,10 +162,7 @@ app.post('/login', function(request, response) {
             sql.close();
             if (loginSuccess) {
                 console.log("LOGIN SUCCESS!");
-                request.session.user = user;
-                // response.redirect('localhost/loginTest.html');
-                const opn = require('opn')
-                opn('loginTest.html')
+                response.redirect(301, 'localhost/loginTest.html');
             } else {
                 console.log("LOGIN FAILED!");
                 return response.status(204).send("Login failed");
@@ -189,6 +187,7 @@ app.post('/addConnection', function(request, response) {
             var addSuccess = recset.rowsAffected[0] === 1;
             if (addSuccess) {
                 console.log("Connection added succesfully");
+                // Go to dashboard
             } else {
                 console.log("Failed to add connection");
             }
@@ -203,32 +202,28 @@ app.post('/addConnection', function(request, response) {
     })
 });
 
+app.get('/getMessage', function(request, response) {
+    console.log(request.body);
+});
 
 app.post('/postMessage', function(request, response) {
-    var user1 = "'" + request.body + "'";
-    var user2 = "'" + request.body + "'";
-    var message = "'" + request.body + "'";
-    var dateObj = new Date();
-    var currentDate = dateObj.getDate();
-    var currentMonth = dateObj.getMonth() + 1;
-    var currentYear = dateObj.getFullYear();
-    var currentHour = dateObj.getHours();
-    var currentMinute = dateObj.getMinutes();
-    var currentSecond = dateObj.getSeconds();
-    var dateString = "'" + currentYear + "-" + currentMonth + "-" + currentDate + " " + currentHour + ":" + currentMinute + ":" + currentSecond + "'";
+    var user1 = request.body;
+    var user2 = request.body;
+    var message = request.body;
+
 
     sql.connect(config).then(() => {
         req = new sql.Request();
-        sqlStat = 'insert into userChats (sender,receiver,message,messageTime) values (' + user1 + ',' + user2 + ',' + message + ',' + dateString + ')';
+        sqlStat = 'insert into userConnection (primaryRegUser,connection) values (' + user1 + ',' + user2 + ')';
         req.query(sqlStat, function(err, recset) {
             var addSuccess = recset.rowsAffected[0] === 1;
             if (addSuccess) {
-                console.log("Chat message added succesfully");
+                console.log("Connection added succesfully");
                 // Go to dashboard
             } else {
-                console.log("Failed to add chat message");
+                console.log("Failed to add connection");
             }
-            response.writeHead(200, "");
+            response.writeHead(204, "");
             response.end();
             sql.close();
         });

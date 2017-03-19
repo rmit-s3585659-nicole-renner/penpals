@@ -170,6 +170,9 @@ app.post('/addConnection', function(request, response) {
     })
 });
 
+app.get('/getMessage', function(request, response) {
+    console.log(request.body);
+});
 
 app.post('/postMessage', function(request, response) {
     var user1 = request.body;

@@ -17,6 +17,12 @@ header {
     background: #008B8B;
 }
 
+.img-circle {
+    border-radius: 50%;
+    width: 64;
+    height: 64;
+}
+
 .mainSection {
     width: 100%;
     flex: 1;

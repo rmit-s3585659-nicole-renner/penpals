@@ -17,8 +17,3 @@ function editProfilePhoto(input) {
             reader.readAsDataURL(profilePhoto);
         }    
     }
-
-
-var sb = new SendBird({
-    appId: E998E2D1-D9C3-4386-997A-20BA0DED6807;
-});

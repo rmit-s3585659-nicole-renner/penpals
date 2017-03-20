@@ -1,14 +1,3 @@
-// var http = require('http')
-// var port = process.env.PORT || 1337;
-// http.createServer(function(req, res) {
-//     // res.writeHead(302, {
-//     //     'Location': 'index.html'
-//     // });
-//     var opn = require('opn');
-//     opn('index.html');
-//     // res.end();
-// }).listen(port);
-
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var express = require('express');
@@ -17,11 +6,20 @@ var app = express();
 //Note that in version 4 of express, express.bodyParser() was
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
-//app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
+app.use(session({ secret: "sdkjgbnsjagbsjklag", resave: false, saveUninitialized: true }));
+
+app.listen(8080, function() {
+    console.log("Server running at http://localhost:8080/");
+});
+
+app.get('/', function(req, res) {
+    console.log("Redirecting to index.html");
+    var opn = require('opn');
+    opn('index.html');
+})
 
 app.post('/signup', function(request, response) {
-    console.log("sql start");
+    // console.log(request.body);
     var username = "'" + request.body.user.username + "'";
     var password = "'" + request.body.user.password + "'";
 
@@ -96,8 +94,6 @@ app.post('/signup', function(request, response) {
         insertExp(username, sportsExpertise);
         insertExp(username, travelExpertise);
 
-        response.redirect(301, 'chatPage.html');
-
         // go to dashboard
 
         return;
@@ -109,47 +105,14 @@ app.post('/signup', function(request, response) {
     sql.close();
 });
 
-function insertLang(username, language) {
-    if (language != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userLanguage (regUserName,language) values (' + username + ',' + language + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
+app.get('/dashboard', function(request, response) {
+    console.log(request.session);
+    if (!request.session.user) {
+        return response.status(403).send();
+    } else {
+        return response.status(200).send("Welcome");
     }
-}
-
-function insertInt(username, interest) {
-    if (interest != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userInterest (regUserName,interest) values (' + username + ',' + interest + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
-    }
-}
-
-function insertExp(username, experience) {
-    if (experience != undefined) {
-        req = new sql.Request();
-        sqlStat = 'insert into userExperience (regUserName,experience) values (' + username + ',' + experience + ')';
-        req.query(sqlStat, function(err, recset) {
-            console.log(err);
-            console.log(recset);
-        });
-    }
-}
-
-// app.get('/dashboard', function(request, response) {
-//     console.log(request.session);
-//     if (!request.session.user) {
-//         return response.status(403).send();
-//     } else {
-//         return response.status(200).send("Welcome");
-//     }
-// });
+});
 
 app.post('/login', function(request, response) {
     var user = "'" + request.body.user + "'";
@@ -164,7 +127,10 @@ app.post('/login', function(request, response) {
             sql.close();
             if (loginSuccess) {
                 console.log("LOGIN SUCCESS!");
-                response.redirect(301, 'chatPage.html');
+                request.session.user = user;
+                // response.redirect('localhost/loginTest.html');
+                const opn = require('opn')
+                opn('loginTest.html')
             } else {
                 console.log("LOGIN FAILED!");
                 return response.status(204).send("Login failed");
@@ -204,23 +170,7 @@ app.post('/addConnection', function(request, response) {
     })
 });
 
-app.post('/getProfile', function(request, response) {
-    var username = "'" + request.body.username + "'";
-    sql.connect(config).then(() => {
-        req = new sql.Request();
-        sqlStat = 'select * from regUser where regUserName=' + username;
-        req.query(sqlStat, function(err, recset) {
-            response.status(200).send(JSON.stringify(recset));
-            sql.close();
-        });
-    }).then(result => {
-        console.dir(result);
-    }).catch(err => {
-        console.dir(err);
-    })
-});
-
-app.post('/getMessage', function(request, response) {
+app.get('/getMessage', function(request, response) {
     console.log(request.body);
 });
 
@@ -228,6 +178,7 @@ app.post('/postMessage', function(request, response) {
     var user1 = request.body;
     var user2 = request.body;
     var message = request.body;
+
 
     sql.connect(config).then(() => {
         req = new sql.Request();
@@ -251,10 +202,6 @@ app.post('/postMessage', function(request, response) {
     })
 });
 
-app.listen(8080, function() {
-    console.log("POST server running at http://localhost:8080/");
-});
-
 ////////////////////////////////////////////////////// SQL SECTION AHEAD
 
 const sql = require('mssql');
@@ -266,5 +213,38 @@ const config = {
     tableName: 'testtable',
     options: {
         encrypt: true // Use this if you're on Windows Azure
+    }
+}
+
+function insertLang(username, language) {
+    if (language != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userLanguage (regUserName,language) values (' + username + ',' + language + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
+    }
+}
+
+function insertInt(username, interest) {
+    if (interest != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userInterest (regUserName,interest) values (' + username + ',' + interest + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
+    }
+}
+
+function insertExp(username, experience) {
+    if (experience != undefined) {
+        req = new sql.Request();
+        sqlStat = 'insert into userExperience (regUserName,experience) values (' + username + ',' + experience + ')';
+        req.query(sqlStat, function(err, recset) {
+            console.log(err);
+            console.log(recset);
+        });
     }
 }
